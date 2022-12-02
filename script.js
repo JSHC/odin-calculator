@@ -48,9 +48,9 @@ function onOperatorClick(e) {
         currentOperation.operator = operator;
         updateDisplay(operator);
     } else {
-        const secondNumber = Number(display.innerText.split(operator)[1]);
+        const secondNumber = Number(display.innerText.split(currentOperation.operator)[1]);
         let result = operate(
-            operator, currentOperation.firstNumber, secondNumber
+            currentOperation.operator, currentOperation.firstNumber, secondNumber
             );
         setDisplay(result+operator);
         currentOperation.firstNumber = result;
