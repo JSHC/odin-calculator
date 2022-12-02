@@ -17,6 +17,12 @@ const display = document.querySelector('.display');
 clearDisplay();
 
 let firstNumber;
+const operators = {
+    'x': multiply,
+    '+': add,
+    '/': divide,
+    '-': subtract
+}
 
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
@@ -57,6 +63,10 @@ function setDisplay(string) {
     display.innerText = string;
 }
 
+function getDisplay() {
+    return display.innerText;
+}
+
 function getNumberFromDisplay() {
     return Number(display.innerText);
 }
@@ -79,16 +89,9 @@ function divide(a, b) {
 
 function operate(operator, a, b) {
     console.log(`operate called with: ${operator}, ${a}, ${b}`);
-    switch(operator) {
-        case "+":
-            return add(a, b);
-        case "-":
-            return subtract(a, b);
-        case "x":
-            return multiply(a, b);
-        case "/":
-            return multiply(a, b);
-        default:
-            return "Error: Invalid operator";
+    if(operators.hasOwnProperty(operator)) {
+        return operators[operator](a, b);
+    } else {
+        return console.log("Operator not found in operators object");
     }
 }
