@@ -53,7 +53,14 @@ function onOperatorClick(e) {
         currentOperation.operator = operator;
         updateDisplay(operator);
     } else {
-        const secondNumber = Number(display.innerText.split(currentOperation.operator)[1]);
+        splitString = display.innerText.split(currentOperation.operator);
+        console.log(splitString);
+        let secondNumber;
+        if (splitString[1]) {
+            secondNumber = Number(splitString[1]);
+        } else {
+            return;
+        }
         let result = operate(
             currentOperation.operator, currentOperation.firstNumber, secondNumber
             );
@@ -112,9 +119,18 @@ function divide(a, b) {
 
 function sum() {
     if(!currentOperation.operator) {
+        currentOperation.firstNumber = getNumberFromDisplay();
         return;
     }
-    const secondNumber = Number(display.innerText.split(currentOperation.operator)[1]);
+    splitString = display.innerText.split(currentOperation.operator);
+    console.log(splitString);
+    let secondNumber;
+    if (splitString[1]) {
+        secondNumber = Number(splitString[1]);
+    } else {
+        secondNumber = currentOperation.firstNumber;
+    }
+
     console.log(secondNumber);
 
     const result = operate(
