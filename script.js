@@ -18,11 +18,16 @@ function onNumberClick(e) {
 
 function updateDisplay(newString) {
     const currentDisplayString = display.innerText;
-    display.innerText = currentDisplayString + newString;
+    if (currentDisplayString === '0') {
+        display.innerText = newString;
+    } else {
+        display.innerText = currentDisplayString + newString;
+    }
+    
 }
 
 function clearDisplay() {
-    display.innerText = '';
+    display.innerText = '0';
 }
 
 function add(a, b) {
