@@ -10,8 +10,11 @@ operatorButtons.forEach(button => {
     button.addEventListener('click', onOperatorClick);
 });
 
-const clearButton = document.querySelector('.clear').addEventListener('click',
-    clearDisplay);
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', clearDisplay);
+
+const sumButton = document.querySelector('#sum');
+sumButton.addEventListener('click', sum);
 
 const display = document.querySelector('.display');
 clearDisplay();
