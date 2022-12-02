@@ -1,7 +1,12 @@
 const numberButtons = document.querySelectorAll(".number");
+
 numberButtons.forEach(button => {
     button.addEventListener('click', onNumberClick);
 });
+
+const clearButton = document.querySelector('.clear').addEventListener('click',
+    clearDisplay);
+
 const display = document.querySelector('.display');
 clearDisplay();
 
