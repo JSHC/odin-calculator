@@ -16,12 +16,17 @@ const clearButton = document.querySelector('.clear').addEventListener('click',
 const display = document.querySelector('.display');
 clearDisplay();
 
-let firstNumber;
+
 const operators = {
     'x': multiply,
     '+': add,
     '/': divide,
     '-': subtract
+}
+
+const currentOperation = {
+    firstNumber: null,
+    operator: null,
 }
 
 function onNumberClick(e) {
@@ -33,22 +38,27 @@ function onNumberClick(e) {
 function onOperatorClick(e) {
     const operator = e.target.innerText;
     console.log(operator);
-    if (!firstNumber) {
-        firstNumber = getNumberFromDisplay();
+    if (currentOperation.firstNumber === null) {
+        currentOperation.firstNumber = getNumberFromDisplay();
+        updateDisplay(operator);
+    } else if (currentOperation.operator === null) {
+        currentOperation.operator = operator;
         updateDisplay(operator);
     } else {
         const secondNumber = Number(display.innerText.split(operator)[1]);
         let result = operate(
-            operator, firstNumber, secondNumber
+            operator, currentOperation.firstNumber, secondNumber
             );
         setDisplay(result+operator);
-        firstNumber = result;
+        currentOperation.firstNumber = result;
     }
+    currentOperation.operator = operator;
+    console.log(currentOperation)
 }
 
 function updateDisplay(newString) {
     const currentDisplayString = display.innerText;
-    if (currentDisplayString === '0') {
+    if (currentDisplayString === '0' && !isNaN(Number(newString))) {
         setDisplay(newString);
     } else {
         setDisplay(currentDisplayString + newString);
@@ -85,6 +95,22 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+}
+
+function sum() {
+    if(!currentOperation.operator) {
+        return;
+    }
+    const secondNumber = Number(display.innerText.split(currentOperation.operator)[1]);
+    console.log(secondNumber);
+
+    const result = operate(
+        currentOperation.operator, currentOperation.firstNumber, secondNumber
+        );
+    
+    currentOperation.firstNumber = result;
+    currentOperation.operator = null;
+    setDisplay(result);
 }
 
 function operate(operator, a, b) {
