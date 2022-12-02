@@ -16,6 +16,8 @@ clearButton.addEventListener('click', reset);
 const sumButton = document.querySelector('#sum');
 sumButton.addEventListener('click', sum);
 
+const display = document.querySelector('.display');
+
 const operators = {
     'x': multiply,
     '+': add,
@@ -33,10 +35,7 @@ const currentOperation = {
     }
 }
 
-const display = document.querySelector('.display');
 reset();
-
-
 
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
