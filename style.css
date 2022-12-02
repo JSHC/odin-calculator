@@ -58,6 +58,8 @@ body {
     border: 1px solid #bbb;
 }
 
+/* Individual button styling and positioning in grid */
+
 #sum {
     background-color: #b0d7e6;
     border: 1px solid #b0d7e6;
