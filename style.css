@@ -1,3 +1,146 @@
 * {
     font-family: Helvetica, Arial, sans-serif;
 }
+
+body {
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    align-items: center;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: #ccc;
+    padding: 10px;
+    flex: 1;
+    max-width: 100%;
+    width: 450px;
+    min-width: 0;
+}
+
+.display {
+    font-size: 1.3rem;
+    text-align: right;
+    background-color: #dddddd;
+    padding: 15px 10px;
+    margin-bottom: 5px;
+    min-width: 0;
+}
+
+.buttons {
+    min-width: 0;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.calc-button {
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: #eeeeee;
+    border: 1px solid #eee;
+    padding: 10px 0px;
+    margin: 1px;
+    font-weight: 500;
+}
+
+.calc-button:hover {
+    background-color: #ccc;
+    border: 1px solid #bbb;
+}
+
+#sum {
+    background-color: #b0d7e6;
+    border: 1px solid #b0d7e6;
+    grid-row: 5;
+    grid-column: 4;
+}
+
+#sum:hover {
+    background-color: #7f9eaa;
+    border: 1px solid #4e5f66;
+}
+
+#clear {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+#add {
+    grid-row: 4;
+    grid-column: 4;
+}
+
+#subtract {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+#multiply {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+#divide {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+#btn0 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+#btn1 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+#btn2 {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+#btn3 {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+#btn4 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#btn5 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#btn6 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+#btn7 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#btn8 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#btn9 {
+    grid-column: 3;
+    grid-row: 2;
+}
