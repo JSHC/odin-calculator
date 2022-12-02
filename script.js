@@ -1,3 +1,13 @@
+const numberButtons = document.querySelectorAll(".number");
+numberButtons.forEach(button => {
+    button.addEventListener('click', onNumberClick);
+});
+
+function onNumberClick(e) {
+    const number = Number(e.target.innerText);
+    console.log(number);
+}
+
 function add(a, b) {
     return a + b;
 }
