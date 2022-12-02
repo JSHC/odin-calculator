@@ -2,17 +2,22 @@ const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
     button.addEventListener('click', onNumberClick);
 });
-
+const display = document.querySelector('.display');
+clearDisplay();
 
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
     console.log(number);
+    updateDisplay(number);
 }
 
 function updateDisplay(newString) {
-    const display = document.querySelector('.display');
     const currentDisplayString = display.innerText;
     display.innerText = currentDisplayString + newString;
+}
+
+function clearDisplay() {
+    display.innerText = '';
 }
 
 function add(a, b) {

@@ -27,6 +27,7 @@ body {
 }
 
 .display {
+    min-height: 30px;
     font-size: 1.3rem;
     text-align: right;
     background-color: #dddddd;
