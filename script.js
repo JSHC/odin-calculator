@@ -16,6 +16,8 @@ const clearButton = document.querySelector('.clear').addEventListener('click',
 const display = document.querySelector('.display');
 clearDisplay();
 
+let firstNumber;
+
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
     console.log(number);
@@ -25,19 +27,38 @@ function onNumberClick(e) {
 function onOperatorClick(e) {
     const operator = e.target.innerText;
     console.log(operator);
+    if (!firstNumber) {
+        firstNumber = getNumberFromDisplay();
+        updateDisplay(operator);
+    } else {
+        const secondNumber = Number(display.innerText.split(operator)[1]);
+        let result = operate(
+            operator, firstNumber, secondNumber
+            );
+        setDisplay(result+operator);
+        firstNumber = result;
+    }
 }
 
 function updateDisplay(newString) {
     const currentDisplayString = display.innerText;
     if (currentDisplayString === '0') {
-        display.innerText = newString;
+        setDisplay(newString);
     } else {
-        display.innerText = currentDisplayString + newString;
+        setDisplay(currentDisplayString + newString);
     }
 }
 
 function clearDisplay() {
-    display.innerText = '0';
+    setDisplay('0');
+}
+
+function setDisplay(string) {
+    display.innerText = string;
+}
+
+function getNumberFromDisplay() {
+    return Number(display.innerText);
 }
 
 function add(a, b) {
@@ -57,6 +78,7 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
+    console.log(`operate called with: ${operator}, ${a}, ${b}`);
     switch(operator) {
         case "+":
             return add(a, b);
