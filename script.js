@@ -11,14 +11,10 @@ operatorButtons.forEach(button => {
 });
 
 const clearButton = document.querySelector('.clear');
-clearButton.addEventListener('click', clearDisplay);
+clearButton.addEventListener('click', reset);
 
 const sumButton = document.querySelector('#sum');
 sumButton.addEventListener('click', sum);
-
-const display = document.querySelector('.display');
-clearDisplay();
-
 
 const operators = {
     'x': multiply,
@@ -30,7 +26,17 @@ const operators = {
 const currentOperation = {
     firstNumber: null,
     operator: null,
+    reset: function() {
+        console.log("Resetting");
+        this.firstNumber = null;
+        this.operator = null;
+    }
 }
+
+const display = document.querySelector('.display');
+reset();
+
+
 
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
@@ -66,6 +72,11 @@ function updateDisplay(newString) {
     } else {
         setDisplay(currentDisplayString + newString);
     }
+}
+
+function reset() {
+    currentOperation.reset();
+    clearDisplay();
 }
 
 function clearDisplay() {
