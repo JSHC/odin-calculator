@@ -4,6 +4,12 @@ numberButtons.forEach(button => {
     button.addEventListener('click', onNumberClick);
 });
 
+const operatorButtons = document.querySelectorAll('.operator');
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', onOperatorClick);
+});
+
 const clearButton = document.querySelector('.clear').addEventListener('click',
     clearDisplay);
 
@@ -16,6 +22,11 @@ function onNumberClick(e) {
     updateDisplay(number);
 }
 
+function onOperatorClick(e) {
+    const operator = e.target.innerText;
+    console.log(operator);
+}
+
 function updateDisplay(newString) {
     const currentDisplayString = display.innerText;
     if (currentDisplayString === '0') {
@@ -23,7 +34,6 @@ function updateDisplay(newString) {
     } else {
         display.innerText = currentDisplayString + newString;
     }
-    
 }
 
 function clearDisplay() {
@@ -52,7 +62,7 @@ function operate(operator, a, b) {
             return add(a, b);
         case "-":
             return subtract(a, b);
-        case "*":
+        case "x":
             return multiply(a, b);
         case "/":
             return multiply(a, b);
