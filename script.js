@@ -3,9 +3,16 @@ numberButtons.forEach(button => {
     button.addEventListener('click', onNumberClick);
 });
 
+
 function onNumberClick(e) {
     const number = Number(e.target.innerText);
     console.log(number);
+}
+
+function updateDisplay(newString) {
+    const display = document.querySelector('.display');
+    const currentDisplayString = display.innerText;
+    display.innerText = currentDisplayString + newString;
 }
 
 function add(a, b) {
