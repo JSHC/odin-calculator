@@ -64,7 +64,7 @@ function onOperatorClick(e) {
         let result = operate(
             currentOperation.operator, currentOperation.firstNumber, secondNumber
             );
-        currentOperation.firstNumber = roundToDigits(result, 5);
+        currentOperation.firstNumber = roundToDigits(result, 10);
         setDisplay(currentOperation.firstNumber+operator);
     }
     currentOperation.operator = operator;
@@ -137,7 +137,7 @@ function sum() {
         currentOperation.operator, currentOperation.firstNumber, secondNumber
         );
     
-    currentOperation.firstNumber = roundToDigits(result, 5);
+    currentOperation.firstNumber = roundToDigits(result, 10);
     currentOperation.operator = null;
     setDisplay(currentOperation.firstNumber);
 }
