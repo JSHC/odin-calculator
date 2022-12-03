@@ -28,16 +28,21 @@ const operators = {
 const currentOperation = {
     firstNumber: null,
     operator: null,
+    error: "",
     reset: function() {
         console.log("Resetting");
         this.firstNumber = null;
         this.operator = null;
+        this.error = "";
     }
 }
 
 reset();
 
 function onNumberClick(e) {
+    if(currentOperation.error) {
+        reset();
+    }
     const number = Number(e.target.innerText);
     console.log(number);
     updateDisplay(number);
@@ -64,6 +69,13 @@ function onOperatorClick(e) {
         let result = operate(
             currentOperation.operator, currentOperation.firstNumber, secondNumber
             );
+            
+        if (result === Infinity) {
+            currentOperation.error = "Cannot divide by zero"
+            setDisplay(currentOperation.error);
+            disableOperators();
+            return;
+        }
         currentOperation.firstNumber = roundToDigits(result, 10);
         setDisplay(currentOperation.firstNumber+operator);
     }
@@ -83,6 +95,7 @@ function updateDisplay(newString) {
 function reset() {
     currentOperation.reset();
     clearDisplay();
+    enableOperators();
 }
 
 function clearDisplay() {
@@ -136,6 +149,12 @@ function sum() {
     const result = operate(
         currentOperation.operator, currentOperation.firstNumber, secondNumber
         );
+    if (result === Infinity) {
+        currentOperation.error = "Cannot divide by zero"
+        setDisplay(currentOperation.error);
+        disableOperators();
+        return;
+    }
     
     currentOperation.firstNumber = roundToDigits(result, 10);
     currentOperation.operator = null;
@@ -153,4 +172,18 @@ function operate(operator, a, b) {
     } else {
         return console.log("Operator not found in operators object");
     }
+}
+
+function disableOperators() {
+    operatorButtons.forEach(btn => {
+        btn.setAttribute("disabled", "");
+    });
+    sumButton.setAttribute("disabled", "");
+}
+
+function enableOperators() {
+    operatorButtons.forEach(btn => {
+        btn.removeAttribute("disabled", "");
+    });
+    sumButton.removeAttribute("disabled", "");
 }

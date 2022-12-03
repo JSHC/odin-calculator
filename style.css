@@ -46,6 +46,10 @@ body {
     grid-template-rows: repeat(5, 1fr);
 }
 
+.buttons button:disabled {
+    background-color: #aaa;
+}
+
 .calc-button {
     box-sizing: border-box;
     font-size: 1rem;
@@ -73,6 +77,10 @@ body {
 #sum:hover {
     background-color: #7f9eaa;
     border: 1px solid #4e5f66;
+}
+
+#sum:disabled {
+    background-color: #718b96;
 }
 
 #clear {
