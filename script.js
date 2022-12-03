@@ -64,8 +64,8 @@ function onOperatorClick(e) {
         let result = operate(
             currentOperation.operator, currentOperation.firstNumber, secondNumber
             );
-        setDisplay(result+operator);
-        currentOperation.firstNumber = result;
+        currentOperation.firstNumber = roundToDigits(result, 5);
+        setDisplay(currentOperation.firstNumber+operator);
     }
     currentOperation.operator = operator;
     console.log(currentOperation)
@@ -137,9 +137,13 @@ function sum() {
         currentOperation.operator, currentOperation.firstNumber, secondNumber
         );
     
-    currentOperation.firstNumber = result;
+    currentOperation.firstNumber = roundToDigits(result, 5);
     currentOperation.operator = null;
-    setDisplay(result);
+    setDisplay(currentOperation.firstNumber);
+}
+
+function roundToDigits(number, digits) {
+    return Math.round(number * Math.pow(10, digits)) / Math.pow(10, digits);
 }
 
 function operate(operator, a, b) {
